@@ -1,2 +1,2 @@
-ACCOUNT_NAME = 'your_email'
-ACCOUNT_OUT_PASSWORD = 'your_token'
+ACCOUNT_NAME = ''  
+ACCOUNT_OUT_PASSWORD = ''  
