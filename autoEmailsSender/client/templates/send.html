@@ -1,0 +1,76 @@
+{% include 'head.html' %}
+
+<section id="send-menu">
+    <div class="container">
+        <div class="send-menu__wrapper wrapper">
+            <h2 class="title">
+                Отправить письма по адресам
+            </h2>
+
+            <div id="send-form" action="">
+
+                <div class="loading">
+                    <img src="../static/images/loading.gif" alt="">
+                </div>
+
+                <div class="left-side">
+                    <h3 class="subtitle">
+                        Настройки шаблона
+                    </h3>
+                    <div class="inputs">
+                        <h4>
+                            Адресаты
+                        </h4>
+                        <textarea name="addresses" id="addresses"></textarea>
+
+                        <h4>
+                            Заголовок
+                        </h4>
+                        <input type="text" name="title" placeholder="Заголовок письма">
+
+                        <div class="fields">
+                            <h4>
+                                Поля для замены:
+                            </h4>
+                            <div class="field">
+                                <input type="text" class="field_to_replace_key" placeholder="Ключ">
+                                <input type="text" class="field_to_replace_value" placeholder="Значение">
+                            </div>
+                        </div>
+
+                        <div class="append">+</div>
+
+                    </div>
+                </div>
+
+                <div class="right-side">
+                    <h3 class="subtitle">
+                        Выберите шаблон
+                    </h3>
+
+                    <div class="buttons">
+                        <select name="template" id="template">
+
+                        </select>
+
+                        <button class="btn temp">
+                            Предпросмотр
+                        </button>
+                        <button class="btn send">
+                            Отправить
+                        </button>
+                    </div>
+
+                    <div id="template-preview">
+                        <p>
+
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'foot.html' %}

@@ -1,0 +1,45 @@
+{% include 'head.html' %}
+
+<section id="create-menu">
+    <div class="container">
+        <div class="create-menu__wrapper wrapper">
+            <h2 class="title">
+                Загрузить новый шаблон
+            </h2>
+
+            <form id="create-form" action="">
+                <div class="right-side">
+                    <h3 class="subtitle">
+                        Загрузите шаблон
+                    </h3>
+
+                    <div class="inputs">
+                        <h4>
+                            Название файла
+                        </h4>
+                        <input type="text" name="template_name" id="template_name">
+
+                        <h4>
+                            Файл (.docx, txt)
+                        </h4>
+                        <input type="file" name="template_file" id="template_file">
+                    </div>
+                </div>
+
+                <div class="btns">
+                    <button class="btn create">
+                        Загрузить
+                    </button>
+                    <button class="btn delete">
+                        Удалить
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    
+</section>
+
+{% include 'foot.html' %}

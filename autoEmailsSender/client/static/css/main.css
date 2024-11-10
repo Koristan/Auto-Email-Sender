@@ -1,0 +1,257 @@
+:root {
+    --primary: #483D8B;
+    --second: #6A5ACD;
+    --background: #f3f2f8;
+    --card: #fff;
+    --black: #0a0909;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Comfortaa", sans-serif;
+}
+
+html {
+    background-color: var(--background);
+}
+
+button,
+select {
+    inset: 0;
+    border: none;
+
+    padding: 5px 20px;
+    border: 1px solid var(--primary);
+    background-color: var(--card);
+    color: var(--primary);
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+button:focus-visible {
+    outline: none;
+}
+select:focus-visible {
+    border: 1px solid var(--second);
+    outline: none;
+}
+button:hover {
+    background-color: var(--primary);
+    color: var(--card);
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+    line-height: 150%;
+}
+
+textarea,
+input {
+    inset: 0;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid var(--primary);
+    padding: 10px 15px;
+    transition: all .3s ease-in-out;
+}
+
+textarea:focus-visible,
+input:focus-visible {
+    border: 1px solid var(--second);
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+
+a:hover {
+    color: var(--second);
+}
+
+a::before {
+    position: absolute;
+    content: '';
+    bottom: -1px;
+    height: 2px;
+    left: 50%;
+    width: 10%;
+    transform: translateX(-50%);
+    background-color: var(--primary);
+    transition: all .3s ease-in-out;
+}
+
+a:hover::before {
+    left: 0;
+    transform: translateX(0);
+    width: 100%;
+    background-color: var(--second);
+}
+
+p,
+h4 {
+    color: var(--primary);
+    line-height: 150%;
+}
+
+
+.container {
+    max-width: 1170px;
+    width: 100%;
+    padding: 10px 5px;
+    margin: 0 auto;
+}
+
+body {
+    margin-top: 100px;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    height: 90px;
+}
+
+header .header__menu {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.wrapper {
+    border-radius: 10px;
+    border: 2px solid var(--primary);
+    padding: 20px 10px;
+}
+
+.title {
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    color: var(--primary);
+}
+
+.subtitle {
+    color: var(--primary);
+
+}
+
+.desc-holder {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.desc-holder .text {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+#send-form {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+#send-form.pause {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#send-form .loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+}
+
+#send-form.pause .loading {
+    opacity: 1;
+} 
+
+#send-form .inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+#send-form h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#send-form .field {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+#send-form .append {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid var(--primary);
+    width: 40px;
+    height: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+#send-form .append:hover {
+    background-color: var(--primary);
+    color: var(--card);
+}
+
+#send-form .buttons{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#template-preview {
+    margin-top: 20px;
+}
+
+#send-form .send {
+    display: none;
+}
+
+#create-form .inputs {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+#create-form .btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 200px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
