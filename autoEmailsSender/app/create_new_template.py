@@ -9,6 +9,16 @@ class TemplateControleer:
 
     def create_template(self, name='', file=''):
         
+        try:
+            os.mkdir('app/temp')
+        except Exception as e:
+            print(e)
+
+        try:
+            os.mkdir(path_to_templates)
+        except Exception as e:
+            print(e)
+
         filename = file.filename
         file.save(f'app/temp/{filename}')
         

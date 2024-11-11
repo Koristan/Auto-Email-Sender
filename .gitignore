@@ -1,3 +1,7 @@
 
 /autoEmailsSender/venv
 autoEmailsSender/start.bat
+/autoEmailsSender/app/temp
+/autoEmailsSender/app/__pycache__
+/autoEmailsSender/app/doc_templates
+/autoEmailsSender/client/__pycache__
