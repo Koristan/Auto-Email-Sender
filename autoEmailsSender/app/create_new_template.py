@@ -75,3 +75,25 @@ class TemplateControleer:
             return {'err': 'Шаблонов нет'}
         
         return {'msg': templates}
+    
+    def save_users_to_template(self, template_name, addresses):
+        
+        template = self.load_template(template_name)['msg']
+        
+        if ('DEBUGING_SPLIT_ROW' not in template):
+            new_template = template + 'DEBUGING_SPLIT_ROW' + addresses
+        else:
+            new_template = template.split('DEBUGING_SPLIT_ROW')[0] + 'DEBUGING_SPLIT_ROW' + addresses
+
+        with open(f'{path_to_templates}/{template_name}', 'w', encoding='utf-8') as file:
+            file.write(new_template.replace('\r\n', '\r')) # Remove other spaces
+        
+        return {'msg': 'Ok'}
+        
+    def load_users_from_template(self, template_name):
+        
+        template = self.load_template(template_name)['msg']
+        
+        addresses = 'nothing' if ('DEBUGING_SPLIT_ROW' not in template) else template.split('DEBUGING_SPLIT_ROW')[1]
+        
+        return addresses

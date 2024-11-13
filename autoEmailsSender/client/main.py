@@ -82,5 +82,14 @@ def api_send():
     status = contr.send_mails(addresses, template, title, fields)
     return status
 
+@fApp.route('/api/load_addresses', methods=['GET', 'POST'])
+def load_addresses():
+
+    template = request.form.get('template')
+    contr = TemplateControleer()
+    addresses = contr.load_users_from_template(template)
+    return addresses
+
+
 if __name__ == '__main__':
     fApp.run(debug=True)

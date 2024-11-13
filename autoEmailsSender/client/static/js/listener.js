@@ -13,7 +13,7 @@ $(document).ready(function () {
         let formdata = new FormData();
         formdata.append('template_name', template_name);
         formdata.append('template_file', file)
-        if(template_name == '') {
+        if (template_name == '') {
             alert('Заполните название шаблона');
             return;
         } else if (template_name.includes('.') || template_name.includes(',') || template_name.includes('/') || template_name.includes('\\') || template_name.includes(' ')) {
@@ -84,6 +84,7 @@ $(document).ready(function () {
                 }
                 else {
                     let wrapper = $('#template');
+                    first = 'selected';
                     data.msg.forEach(element => {
                         wrapper.append('<option value="' + element + '">' + element + '</option>');
                     });
@@ -159,6 +160,34 @@ $(document).ready(function () {
         });
     });
 
+
+
+
+    // Load Addresses
+    $('#send-form select').on('input', function () {
+        load_addresses();
+    });
+
+    if (location.pathname == '/send') {
+        setTimeout(() => {  load_addresses(); }, 300);
+    }
+
+    function load_addresses() {
+        let formdata = new FormData();
+        formdata.append('template', $('select[name=template]').val());
+        
+        $.ajax({
+            url: '/api/load_addresses',
+            method: 'post',
+            contentType: false,
+            cache: false,
+            data: formdata,
+            processData: false,
+            success: function (data) {
+                $('#send-form textarea[name=addresses]').val(data);
+            }
+        });
+    }
 
     function get_all_fields(form) {
         let fields = [];

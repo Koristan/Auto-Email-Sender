@@ -12,7 +12,8 @@ class SenderController:
     
     def check_example(self, addresses, template, fields):
         if (addresses == ''): return {'err': 'Не заполнены адреса'}
-        
+
+        self.contr.save_users_to_template(template, addresses)
         new_template = self.replace_in_template(template, fields)
         return new_template
     
@@ -20,30 +21,30 @@ class SenderController:
         
         if (addresses == ''): return {'err': 'Не заполнены адреса'}
         
+        self.contr.save_users_to_template(template, addresses)
         new_template = self.replace_in_template(template, fields)
         
-        new_addresses = []
+        errors = ''
         for addr in addresses.split('\n'):
             if ('@' not in addr): continue
             if (addr == ''): continue
-            
-            new_addresses.append(addr.replace('\r', ''))
-        
-        print(addresses, '|', new_addresses)
-        
-        try:
-            msg = Message(title, sender=self.app.config['MAIL_USERNAME'], recipients=new_addresses)
-            msg.body = new_template
-            self.mail.send(msg)
-        except Exception as e:
-            print(f'\nERROR: {e}\n')
-            return {'err': 'Ошибка при отправке! (Возможно неправильные адресаты или не указан внешний пароль)'}
+    
+            try:
+                msg = Message(title, sender=self.app.config['MAIL_USERNAME'], recipients=[addr.replace('\r', '')])
+                msg.body = new_template
+                self.mail.send(msg)
+            except Exception as e:
+                print(f'\nERROR: {e}\n')
+                errors += f'{addr} не обработан;\n'
+                
+        if (errors != ''): return {'err': f'Не все адреса были отправлены:\n{errors}'}
         
         return {'msg': 'Ok'}
     
     def replace_in_template(self, template, fields):
         fields = literal_eval(fields)
         template = self.contr.load_template(template)['msg']
+        template = template.split('DEBUGING_SPLIT_ROW')[0]
         for field in fields:
             template = template.replace(field[0], field[1])
             
